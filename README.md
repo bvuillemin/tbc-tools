@@ -21,8 +21,8 @@ The RF captures are not published. The stills are small crops used only to compa
 
 The reference is the Blu-ray of the same film, aligned to every 20th VHS frame:
 
-- **Time:** from the known PAL speed-up (25/24, or 25/23.976), refined on three textured frames.
-- **Space:** a fixed scale per tape, with a per-frame translation found by FFT correlation of the luma gradients. Frames scoring below 0.35 are dropped, which leaves 106 frames for the Diner and 25 for Shrek.
+- **Time:** the tape plays the film sped up to 25 fps, so each VHS frame is one film frame; the start is refined on three textured frames.
+- **Space:** a fixed scale per tape, with a per-frame translation found by FFT correlation of the luma gradients. Frames scoring below 0.35 are dropped, which leaves 133 frames for Le Dîner de Cons and 43 for Shrek.
 - **Colour:** the film is converted to BT.601 Y'CbCr, the units of the VHS decode.
 
 ### Errors

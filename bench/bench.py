@@ -64,7 +64,7 @@ def time_align(base):
     """Film time of VHS frame 0 and film frames per VHS frame, from the mean-luma sequences."""
     sp = SPANS[base]; f = FILMS[sp["film"]]
     v = vhs_luma_seq(base, sp["n"])
-    rate = f["fps"] / 25.0                     # film frames advanced per VHS frame (VHS plays the film at 25)
+    rate = 1.0                                 # film frames per VHS frame: PAL/SECAM VHS plays the film sped up, one film frame per frame
     if sp["guess"] is None:
         t0, span = 3699.0, 60.0                # Shrek 30 s capture: film ~61:39 (F0 ~ 88708 / 23.976)
     else:
@@ -119,7 +119,7 @@ def alignment(base, step=20):
     path = f"{P.CACHE}/align_{base}.json"
     if os.path.exists(path):
         return json.load(open(path))
-    sp = SPANS[base]; fps = FILMS[sp["film"]]["fps"]; rate = fps / 25.0
+    sp = SPANS[base]; fps = FILMS[sp["film"]]["fps"]; rate = 1.0  # one film frame per VHS frame (25 fps speed-up)
     lpath = P.luma(base, 1, sp["n"])
     mask = picture_mask(base)
     ax, ay = GEOM[sp["film"]]
